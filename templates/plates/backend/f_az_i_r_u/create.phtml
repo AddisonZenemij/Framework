@@ -1,0 +1,92 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box table-responsive">
+								<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_create_az_i_r_u">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+													<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+													<span>Listar Resultados</span>
+												</a>
+												<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_create_az_i_r_u">
+													<em class="mdi mdi-content-save-all"></em>
+													<span>Guardar Registro</span>
+												</button>
+											</div>
+											<div class="hide" id="form_ajax_az_i_r_u"></div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Rol:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_role" id="field_role" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_select_tc_az_role): ?>
+															<?php foreach ($df_sql_select_tc_az_role as $key): ?>
+																<option value="<?= $key[d_az_role_id_az_role]; ?>">
+																	<?= $key[d_az_role_t_name]; ?>
+																</option>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Usuario:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_user" id="field_user" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_select_tc_az_user): ?>
+															<?php foreach ($df_sql_select_tc_az_user as $key): ?>
+																<option value="<?= $key[d_az_user_id_az_user]; ?>">
+																	<?= $key[d_az_user_t_login]; ?>
+																</option>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Descripcion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<textarea name="field_description" id="field_description" class="form-control" placeholder="Digita el texto ..." required="" rows="5"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

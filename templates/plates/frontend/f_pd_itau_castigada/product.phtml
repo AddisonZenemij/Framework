@@ -1,0 +1,40 @@
+<?= $this->insert('frontend/pattern/header'); ?>
+<body class="widescreen fixed-left-void">
+	<div id="wrapper" class="forced enlarged">
+		<?= $this->insert('frontend/pattern/topbar'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table id="datatable" class="table table-sm table-condensed table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Numero Producto</th>
+										<th>Nombre Producto</th>
+										<th>Saldo Capital</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if (false != $df_sql_controller_product): ?>
+										<?php foreach ($df_sql_controller_product as $key): ?>
+											<tr>
+												<td>#</td>
+												<td><?= substr($key[d_itau_c_he01_p_d_c_numero_producto], -6); ?></td>
+												<td><?= $key[d_itau_c_he01_p_d_c_nombre_producto]; ?></td>
+												<td><?= number_format($key[d_itau_c_he01_p_d_c_saldo_capital]); ?></td>
+											</tr>
+										<?php endforeach; ?>
+									<?php endif; ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?= $this->insert('frontend/pattern/script'); ?>
+</body>
+</html>

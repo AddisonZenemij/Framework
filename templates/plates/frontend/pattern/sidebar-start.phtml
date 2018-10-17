@@ -1,0 +1,23 @@
+		<?php $var_session_menu = new dvdesignModel; ?>
+		<?php $var_session_menu = $var_session_menu->read_session_menu_intern(); ?>
+		<div class="left side-menu">
+			<div class="sidebar-inner slimscrollleft">
+				<div id="sidebar-menu">
+					<ul>
+						<?php if (false != $var_session_menu): ?>
+							<?php foreach ($var_session_menu as $key): ?>
+								<li>
+									<a href="<?= $key['lbl_az_menu_crud_t_url'] ?>read/" class="waves-effect waves-primary">
+										<i class="waves-effect <?= $key['lbl_az_icon_t_name'] ?>"></i>
+										<span><?= $key['lbl_az_menu_crud_t_name'] ?></span>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		

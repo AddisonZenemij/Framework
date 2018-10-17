@@ -1,0 +1,119 @@
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand logo" href="home/">
+				<span><?= APP ?></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarsExample07">
+				<ul class="navbar-nav ml-auto">
+					<li class="list-inline-item dropdown notification-list">
+						<a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="" role="button" aria-haspopup="false" aria-expanded="false">
+							<em class="ti-menu-alt"></em>
+							<span>Inicio</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right profile-dropdown" aria-labelledby="Preview">
+							<a href="home/" class="dropdown-item notify-item">
+								<em class="ti-home"></em>
+								<span>Nosotros</span>
+							</a>
+							<a href="history/" class="dropdown-item notify-item">
+								<em class="ti-clipboard"></em>
+								<span>Historia</span>
+							</a>
+							<a href="client/" class="dropdown-item notify-item">
+								<em class="ti-user"></em>
+								<span>Clientes</span>
+							</a>
+							<a href="job/" class="dropdown-item notify-item">
+								<em class="ti-bag"></em>
+								<span>Empleo</span>
+							</a>
+							<a href="contact/" class="dropdown-item notify-item">
+								<em class="ti-email"></em>
+								<span>Contacto</span>
+							</a>
+						</div>
+					</li>
+					<li class="nav-item list-inline-item dropdown notification-list">
+						<a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+							<em class="ti-menu-alt"></em>
+							<span>Productos / Servicios</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right profile-dropdown" aria-labelledby="Preview">
+							<a href="#prisma_cobranzas" class="dropdown-item notify-item">
+								<em class="ti-home"></em>
+								<span>Prisma Cobranzas</span>
+							</a>
+							<a href="#prisma_outsourcing" class="dropdown-item notify-item">
+								<em class="ti-home"></em>
+								<span>Prisma Outsourcing</span>
+							</a>
+							<a href="#prisma_solidario" class="dropdown-item notify-item">
+								<em class="ti-home"></em>
+								<span>Prisma Solidario</span>
+							</a>
+							<a href="#prisma_software" class="dropdown-item notify-item">
+								<em class="ti-home"></em>
+								<span>Prisma Software</span>
+							</a>
+						</div>
+					</li>
+					<li class="list-inline-item dropdown notification-list">
+						<?php if (!isset($_SESSION[SESS_APP_ID])): ?>
+							<a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<em class="ti-menu-alt"></em>
+								<span>Usuarios</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right profile-dropdown" aria-labelledby="Preview">
+								<a href="login/" class="dropdown-item notify-item">
+									<em class="ti-user"></em>
+									<span>Empezar</span>
+								</a>
+								<!--<a href="register/" class="dropdown-item notify-item">
+									<em class="ti-id-badge"></em>
+									<span>Registro</span>
+								</a>-->
+							</div>
+						<?php else: ?>
+							<a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<em class="ti-menu-alt"></em>
+								<span>Usuarios</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right profile-dropdown" aria-labelledby="Preview">
+								<a href="dashboard/" class="dropdown-item notify-item">
+									<em class="ti-dashboard"></em>
+									<span>Dashboard</span>
+								</a>
+								<a href="profile/" class="dropdown-item notify-item">
+									<em class="ti-user"></em>
+									<span>Perfil</span>
+								</a>
+								<a href="record/" class="dropdown-item notify-item">
+									<em class="ti-clipboard"></em>
+									<span>Historial</span>
+								</a>
+								<a href="calendar/" class="dropdown-item notify-item">
+									<em class="ti-calendar"></em>
+									<span>Calendario</span>
+								</a>
+								<a href="settings/" class="dropdown-item notify-item">
+									<em class="ti-settings"></em>
+									<span>Ajustes</span>
+								</a>
+								<a href="help/" class="dropdown-item notify-item">
+									<em class="ti-help"></em>
+									<span>Ayuda</span>
+								</a>
+								<a href="logout/" class="dropdown-item notify-item">
+									<em class="ti-shift-right"></em>
+									<span>Cerrar Sesion</span>
+								</a>
+							</div>
+						<?php endif ?>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>

@@ -1,0 +1,355 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_update_az_role_az_a_p">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<a href="azrole/azapread/<?= $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_v_id_az_role']; ?>/" class="btn btn-sm btn-outline-dark" id="form_btn_list_az_role_az_a_p">
+												<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+												<span>Listar Resultados</span>
+											</a>
+											<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_update_az_role_az_a_p">
+												<em class="mdi mdi-rotate-3d"></em>
+												<span>Actualizar Registro</span>
+											</button>
+										</div>
+										<div class="hide" id="form_ajax_az_role_az_a_p"></div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+										<div class="form-group">
+											<label>
+												<span>Id:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<input type="text" name="field_id" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $_GET['field_id']; ?>">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+										<div class="form-group">
+											<label>
+												<span>Nombre:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<input type="text" name="field_nombre" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_az_a_p_update['lbl_az_menu_crud_t_name']; ?>">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Menu:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_menu_value" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_menu_value']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Modulo:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_module_value" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_module_value']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Cambios:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_change" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_change']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Crear:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_create" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_create']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Eliminar:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_delete" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_delete']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Detalles:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_detail" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_detail']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Error:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_error" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_error']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Listar:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_read_all" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_read_all']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Listar Eliminados:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_read_eliminate" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_read_eliminate']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Remover:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_remove" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_remove']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+										<div class="form-group">
+											<label>
+												<span>Actualizar:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<select name="field_value_update" class="form-control" required="">
+													<option value="0">Seleccionar</option>
+													<?php if (false != $df_sql_controller_read_state): ?>
+														<?php foreach ($df_sql_controller_read_state as $key): ?>
+															<?php if ($key[d_az_state_t_value] == $df_sql_controller_az_a_p_update['lbl_az_authorized_permits_t_value_update']): ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>" selected>
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php else: ?>
+																<option value="<?= $key[d_az_state_t_value]; ?>">
+																	<?= $key[d_az_state_t_name]; ?>
+																</option>
+															<?php endif ?>
+														<?php endforeach; ?>
+													<?php else: ?>
+														<option value="0">No existen resultados</option>
+													<?php endif; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

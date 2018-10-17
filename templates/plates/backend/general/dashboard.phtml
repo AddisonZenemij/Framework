@@ -1,0 +1,40 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<?php $var_m_dvdesign = new dvdesignModel; ?>
+		<?php $df_sql_permits_t_menu_value = $var_m_dvdesign->sql_permits_t_menu_value(); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<?php if (false != $df_sql_permits_t_menu_value): ?>
+							<?php foreach($df_sql_permits_t_menu_value as $key): ?>
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+									<a href="<?= $key['lbl_az_menu_crud_t_url']; ?>read/">
+										<div class="widget-bg-color-icon card-box fadeInDown animated">
+											<div class="bg-icon bg-icon-primary pull-left">
+												<i class="waves-effect <?= $key['lbl_az_icon_t_name']; ?>"></i>
+											</div>
+											<div class="text-right">
+												<p class="text-muted mb-0">
+													<span><?= $key['lbl_az_menu_crud_t_name']; ?></span>
+												</p>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</a>
+								</div>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

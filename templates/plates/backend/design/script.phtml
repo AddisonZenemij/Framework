@@ -1,0 +1,136 @@
+	<script>
+		var resizefunc = [];
+	</script>
+	<!--Ocrend Framework-->
+	<?php if (DEBUG): ?>
+		<script src="views/app/js/jdev.js"></script>
+	<?php else: ?>
+		<script src="views/backend/assets/js/jquery.min.js"></script>
+	<?php endif ?>
+
+	<script>
+		/*$(document).ready(function(){
+			function lect_ajax_time(){
+				var error_icon = '<span class="mdi mdi-window-close" aria-hidden="true"></span>',
+					success_icon = '<span class="mdi mdi-check-all" aria-hidden="true"></span>',
+					process_icon = '<span class="fa fa-spinner fa-spin" aria-hidden="true"></span>';
+				$.ajax({
+					type: 'GET',
+					url: 'lect_ajax_time',
+					success : function($json) {
+						$('#lect_ajax_time').html($json);
+						setTimeout(lect_ajax_time(),1000);
+					},
+					error : function() {
+						$('#message_error').addClass('text-danger');
+						$("#message_error").html(process_icon  + ' Error');
+						$('#message_error').removeClass('hide');
+					}
+				});
+			}
+			setTimeout(lect_ajax_time(),1000);
+		});*/
+	</script>
+
+	<!--End Ocrend Framework-->
+	<!-- Plugins  -->
+	<script src="views/backend/assets/js/popper.min.js"></script>
+	<script src="views/backend/assets/js/bootstrap.min.js"></script>
+	<script src="views/backend/assets/js/detect.js"></script>
+	<script src="views/backend/assets/js/fastclick.js"></script>
+	<script src="views/backend/assets/js/jquery.slimscroll.js"></script>
+	<script src="views/backend/assets/js/jquery.blockUI.js"></script>
+	<script src="views/backend/assets/js/waves.js"></script>
+	<script src="views/backend/assets/js/wow.min.js"></script>
+	<script src="views/backend/assets/js/jquery.nicescroll.js"></script>
+	<script src="views/backend/assets/js/jquery.scrollTo.min.js"></script>
+	<script src="views/backend/plugins/switchery/switchery.min.js"></script>
+	<!-- Required datatable js -->
+	<script src="views/backend/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="views/backend/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="views/backend/plugins/tablesaw/dist/tablesaw.js"></script>
+	<script src="views/backend/plugins/tablesaw/dist/tablesaw-init.js"></script>
+	<!-- Buttons examples -->
+	<script src="views/backend/plugins/datatables/dataTables.buttons.min.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.bootstrap4.min.js"></script>
+	<script src="views/backend/plugins/datatables/jszip.min.js"></script>
+	<script src="views/backend/plugins/datatables/pdfmake.min.js"></script>
+	<script src="views/backend/plugins/datatables/vfs_fonts.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.html5.min.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.print.min.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.colVis.min.js"></script>
+	<!-- Responsive examples -->
+	<script src="views/backend/plugins/datatables/dataTables.responsive.min.js"></script>
+	<script src="views/backend/plugins/datatables/responsive.bootstrap4.min.js"></script>
+	<!-- Modal-Effect -->
+	<script src="views/backend/plugins/custombox/dist/custombox.min.js"></script>
+	<script src="views/backend/plugins/custombox/dist/legacy.min.js"></script>
+	<!-- Custom main Js -->
+	<script src="views/backend/assets/js/jquery.core.js"></script>
+	<script src="views/backend/assets/js/jquery.app.js"></script>
+	<!--Ocrend Framework-->
+	<script src="views/app/js/jquery.numeric.js"></script>
+	<?php if (isset($_SESSION[SESS_APP_ID])) { ?>
+		<script src="views/backend/js/az_category_icon.js"></script>
+		<script src="views/backend/js/az_category_menu.js"></script>
+		<script src="views/backend/js/az_category_role.js"></script>
+		<script src="views/backend/js/az_country.js"></script>
+		<script src="views/backend/js/az_deleted.js"></script>
+		<script src="views/backend/js/az_i_r_u.js"></script>
+		<script src="views/backend/js/az_icon.js"></script>
+		<script src="views/backend/js/az_level.js"></script>
+		<script src="views/backend/js/az_menu_crud.js"></script>
+		<script src="views/backend/js/az_role.js"></script>
+		<script src="views/backend/js/az_state.js"></script>
+		<script src="views/backend/js/az_sub_menu_crud.js"></script>
+		<script src="views/backend/js/az_temp.js"></script>
+		<script src="views/backend/js/az_user.js"></script>
+		<script src="views/backend/js/pd_base_salary.js"></script>
+		<script src="views/backend/js/pd_birth_place.js"></script>
+		<script src="views/backend/js/pd_brand.js"></script>
+		<script src="views/backend/js/pd_campaign.js"></script>
+		<script src="views/backend/js/pd_category_brand.js"></script>
+		<script src="views/backend/js/pd_category_campaign.js"></script>
+		<script src="views/backend/js/pd_category_provider.js"></script>
+		<script src="views/backend/js/pd_category_novelty.js"></script>
+		<script src="views/backend/js/pd_change_diadem.js"></script>
+		<script src="views/backend/js/pd_civil_status.js"></script>
+		<script src="views/backend/js/pd_contract_type.js"></script>
+		<script src="views/backend/js/pd_daily_activities.js"></script>
+		<script src="views/backend/js/pd_data_personal.js"></script>
+		<script src="views/backend/js/pd_document_type.js"></script>
+		<script src="views/backend/js/pd_employee_charge.js"></script>
+		<script src="views/backend/js/pd_eps.js"></script>
+		<script src="views/backend/js/pd_level_study.js"></script>
+		<script src="views/backend/js/pd_management_tree.js"></script>
+		<script src="views/backend/js/pd_messaging_type.js"></script>
+		<script src="views/backend/js/pd_neighborhood.js"></script>
+		<script src="views/backend/js/pd_novelty.js"></script>
+		<script src="views/backend/js/pd_pension.js"></script>
+		<script src="views/backend/js/pd_personal_type.js"></script>
+		<script src="views/backend/js/pd_provider.js"></script>
+		<script src="views/backend/js/pd_transport_assistance.js"></script>
+		<script src="views/backend/js/pd_type_accrued.js"></script>
+		<script src="views/backend/js/pd_type_definition.js"></script>
+		<script src="views/backend/js/pd_type_management.js"></script>
+		<script src="views/backend/js/pd_worked_days.js"></script>
+		<script src="views/backend/js/pd_worked_period.js"></script>
+		<script src="views/backend/js/zv_password.js"></script>
+		<script src="views/backend/js/zv_profile.js"></script>
+		<!--<script src="views/backend/js/zz_time.js"></script>-->
+	<?php } ?>
+	<script>
+		$('.numeric').numeric();
+	</script>
+	<!--End Ocrend Framework-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#datatable').DataTable();
+			//Buttons examples
+			var table = $('#datatable-buttons').DataTable({
+				lengthChange: false,
+				buttons: ['copy', 'excel', 'csv', 'pdf', 'print']
+			});
+			table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+		});
+	</script>

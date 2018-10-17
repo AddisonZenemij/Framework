@@ -1,0 +1,95 @@
+<?= $this->insert('frontend/pattern/header'); ?>
+<body class="widescreen fixed-left-void">
+	<div id="wrapper" class="forced enlarged">
+		<?= $this->insert('frontend/pattern/topbar'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" method="GET" action="<?= $df_var_controller; ?>reportmanagementall/?field_date_from=<?php $_GET['field_date_from'] ?>&field_date_to=<?php $_GET['field_date_to'] ?>">
+								<div class="row">
+									<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+										<div class="form-group">
+											<label for="field_date_from">
+												<span>Fecha Desde:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<input type="date" name="field_date_from" id="field_date_from" class="form-control" placeholder="Digita el texto ..." required="" value="<?php if ($_GET['field_date_from']) { echo $_GET['field_date_from']; } ?>">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+										<div class="form-group">
+											<label for="field_date_to">
+												<span>Fecha Hasta:</span>
+											</label>
+											<div class="input-group input-group-sm">
+												<input type="date" name="field_date_to" id="field_date_to" class="form-control" placeholder="Digita el texto ..." required="" value="<?php if ($_GET['field_date_to']) { echo $_GET['field_date_to']; } ?>">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+										<div class="form-group">
+											<label for="field_date_to">
+												<span>Acciones:</span>
+											</label>
+											<div class="form-group">
+												<button type="submit" class="btn btn-sm btn-outline-success">
+													<em class="mdi mdi-content-save-all"></em>
+													<span>Cargar Informacion</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<?php if ($_GET['field_date_from'] != '' && $_GET['field_date_to'] != ''): ?>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table id="datatable-buttons" class="table table-sm table-condensed table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Numero Identificacion</th>
+											<th>Nombres Apellidos Cliente</th>
+											<th>Telefono Contacto</th>
+											<th>Nombres Apellidos Asesor</th>
+											<th>Fecha Gestion</th>
+											<th>Hora Gestion</th>
+											<th>Nombre Tipificacion</th>
+											<th>Razon No Pago</th>
+											<th>Detalle Gestion</th>
+											<th>Tipo Cartera</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php if (false != $df_sql_report_management_all): ?>
+											<?php foreach ($df_sql_report_management_all as $key): ?>
+												<tr>
+													<td>#</td>
+													<td><?= $key[d_itau_c_he01_t_c_numeroid]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_nombre]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_telcontacto]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_asesor]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_fecha]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_hora]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_tipificacion]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_razonnopago]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_detalle]; ?></td>
+													<td><?= $key[d_itau_c_he01_t_c_tipocartera]; ?></td>
+												</tr>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</tbody>
+								</table>
+							</div>
+						<?php endif ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?= $this->insert('frontend/pattern/script'); ?>
+</body>
+</html>

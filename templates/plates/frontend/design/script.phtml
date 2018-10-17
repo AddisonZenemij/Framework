@@ -1,0 +1,71 @@
+	<!-- js placed at the end of the document so the pages load faster -->
+	<!--Ocrend Framework-->
+	<?php if (DEBUG): ?>
+		<script src="views/app/js/jdev.js"></script>
+	<?php else: ?>
+		<script src="views/frontend/js/jquery.min.js"></script>
+	<?php endif ?>
+	<!--End Ocrend Framework-->
+
+	
+	<script src="views/frontend/js/popper.min.js"></script>
+	<script src="views/frontend/js/bootstrap.min.js"></script>
+	<script src="views/frontend/js/jquery.easing.1.3.min.js" type="text/javascript"></script>
+	<script src="views/frontend/js/SmoothScroll.js"></script>
+	<script src="views/frontend/js/wow.min.js"></script>
+
+	<!-- Required datatable js -->
+	<script src="views/backend/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="views/backend/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="views/backend/plugins/tablesaw/dist/tablesaw.js"></script>
+	<script src="views/backend/plugins/tablesaw/dist/tablesaw-init.js"></script>
+	<!-- Buttons examples -->
+	<script src="views/backend/plugins/datatables/dataTables.buttons.min.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.bootstrap4.min.js"></script>
+	<script src="views/backend/plugins/datatables/jszip.min.js"></script>
+	<script src="views/backend/plugins/datatables/pdfmake.min.js"></script>
+	<script src="views/backend/plugins/datatables/vfs_fonts.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.html5.min.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.print.min.js"></script>
+	<script src="views/backend/plugins/datatables/buttons.colVis.min.js"></script>
+	<!-- Responsive examples -->
+	<script src="views/backend/plugins/datatables/dataTables.responsive.min.js"></script>
+	<script src="views/backend/plugins/datatables/responsive.bootstrap4.min.js"></script>
+	
+	<script src="views/frontend/js/jquery.waypoints.min.js" type="text/javascript"></script>
+	<script src="views/frontend/js/jquery.counterup.min.js" type="text/javascript"></script>
+	<script src="views/frontend/js/jquery.app.js"></script>
+
+	<!--Ocrend Framework-->
+	<script src="views/app/js/jquery.numeric.js"></script>
+
+	<?php if (!isset($_SESSION[SESS_APP_ID])) { ?>
+		<script src="views/app/js/login.js"></script>
+		<script src="views/app/js/register.js"></script>
+		<script src="views/app/js/lostpass.js"></script>
+	<?php } ?>
+
+	<script>
+		$('.numeric').numeric();
+	</script>
+	<!--End Ocrend Framework-->
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$('.counter').counterUp({
+				delay: 100,
+				time: 1200
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#datatable').DataTable();
+			//Buttons examples
+			var table = $('#datatable-buttons').DataTable({
+				lengthChange: false,
+				buttons: ['copy', 'excel', 'csv', 'pdf', 'print']
+			});
+			table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+		} );
+	</script>
+	

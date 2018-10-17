@@ -1,0 +1,891 @@
+<?= $this->insert('frontend/pattern/header'); ?>
+<body class="widescreen fixed-left-void">
+	<div id="wrapper" class="forced enlarged">
+		<?= $this->insert('frontend/pattern/topbar'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box">
+								<ul class="nav nav-tabs tabs-bordered">
+									<li class="nav-item">
+										<a href="#main" data-toggle="tab" aria-expanded="false" class="nav-link active">
+											<span>Principal</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="#novelty" data-toggle="tab" aria-expanded="false" class="nav-link">
+											<span>Novedades</span>
+										</a>
+									</li>
+									<?php if ($_GET['field_definition'] == 2): ?>
+										<li class="nav-item">
+											<a href="#proyection" data-toggle="tab" aria-expanded="false" class="nav-link">
+												<span>Proyeccion</span>
+											</a>
+										</li>
+									<?php endif ?>
+									<li class="nav-item">
+										<a href="#management" data-toggle="tab" aria-expanded="false" class="nav-link">
+											<span>Gestiones Anteriores</span>
+										</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="main">
+										<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_itau_castigada_create_tipify">
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="form-group">
+														<a href="<?= $df_var_controller; ?>definition/<?= $_GET['field_id'] ?>/?field_session=<?= $_GET['field_session'] ?>" class="btn btn-sm btn-outline-dark" id="form_btn_read_tipify">
+															<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+															<span>Listar Resultados</span>
+														</a>
+														<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_itau_castigada_create_tipify">
+															<em class="mdi mdi-content-save-all"></em>
+															<span>Guardar Registro</span>
+														</button>
+													</div>
+													<div class="hide" id="form_ajax_itau_castigada_tipify"></div>
+												</div>
+												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+													<div class="row">
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_definition">
+																	<span>Definicion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<select name="field_tipify_definition" id="field_tipify_definition" class="form-control" required="" readonly="">
+																		<?php if (false != $df_sql_select_tc_pd_management_tree_definition): ?>
+																			<?php foreach ($df_sql_select_tc_pd_management_tree_definition as $key): ?>
+																				<?php if ($key['lbl_pd_type_definition_id_pd_type_definition'] == $_GET['field_definition']): ?>
+																					<option value="<?= $key['lbl_pd_type_definition_t_name']; ?>" selected>
+																						<?= $key['lbl_pd_type_definition_t_name']; ?>
+																					</option>
+																				<?php endif ?>
+																			<?php endforeach; ?>
+																		<?php endif; ?>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_value">
+																	<span>Tipificacion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<select name="field_tipify_value" id="field_tipify_value" class="form-control" required="">
+																		<option value="0">Seleccionar</option>
+																		<?php if (false != $df_sql_select_tc_pd_management_tree_tipify): ?>
+																			<?php foreach ($df_sql_select_tc_pd_management_tree_tipify as $key): ?>
+																				<option value="<?= $key[d_pd_management_tree_t_name]; ?>">
+																					<?= $key[d_pd_management_tree_t_name]; ?>
+																				</option>
+																			<?php endforeach; ?>
+																		<?php else: ?>
+																			<option value="0">No existen resultados</option>
+																		<?php endif; ?>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_reason_for_non_payment">
+																	<span>Motivo De No Pago:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<select name="field_tipify_reason_for_non_payment" id="field_tipify_reason_for_non_payment" class="form-control" required="">
+																		<option value="0">Seleccionar</option>
+																		<?php if (false != $df_sql_select_tc_pd_management_tree_reason): ?>
+																			<?php foreach ($df_sql_select_tc_pd_management_tree_reason as $key): ?>
+																				<option value="<?= $key[d_pd_management_tree_t_name]; ?>">
+																					<?= $key[d_pd_management_tree_t_name]; ?>
+																				</option>
+																			<?php endforeach; ?>
+																		<?php else: ?>
+																			<option value="0">No existen resultados</option>
+																		<?php endif; ?>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_tracing">
+																	<span>Seguimiento:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<select name="field_tipify_tracing" id="field_tipify_tracing" class="form-control" required="">
+																		<option value="0">Seleccionar</option>
+																		<option value="Si">Si</option>
+																		<option value="No">No</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_phone">
+																	<span>Telefono:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_phone" id="field_tipify_phone" class="form-control" placeholder="Digita el texto ..." value="">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+															<div class="form-group">
+																<label for="field_tipify_detail">
+																	<span>Detalle:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<textarea name="field_tipify_detail" id="field_tipify_detail" class="form-control" placeholder="Digita el texto ..." required="" rows="5"></textarea>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+													<div class="row">
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_name">
+																	<span>Nombre:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_name" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_name]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_identification">
+																	<span>Identificacion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_identification" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_numeroid]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_capital_balance">
+																	<span>Saldo Capital:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_capital_balance" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= number_format($df_sql_controller_tipify[d_itau_c_he01_d_d_c_endeudamientocastigo]); ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_last_payment_value">
+																	<span>Valor Ultimo Pago:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_last_payment_value" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= number_format($df_sql_controller_tipify[d_itau_c_he01_d_d_c_pago]); ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_pay_date">
+																	<span>Fecha Pago:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_pay_date" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_fechapago]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_projection_value">
+																	<span>Valor Proyeccion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_projection_value" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= number_format($df_sql_controller_tipify[d_itau_c_he01_d_d_c_proyeccion]); ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_date_projection">
+																	<span>Fecha Proyeccion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_date_projection" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_fechaproyeccion]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_campaign">
+																	<span>Campaña:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_campaign" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_campaign]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_wallet_type">
+																	<span>Tipo Cartera:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_wallet_type" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tipocartera]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_tipify_asesor">
+																	<span>Usuario:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_tipify_asesor" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_users[d_itau_c_users_first_name] . ' ' . $df_sql_controller_users[d_itau_c_users_last_name]; ?>">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="tab-pane" id="novelty">
+										<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_itau_castigada_update_novelty">
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="form-group">
+														<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_itau_castigada_update_novelty">
+															<em class="mdi mdi-rotate-3d"></em>
+															<span>Actualizar Registro</span>
+														</button>
+													</div>
+													<div class="hide" id="form_ajax_itau_castigada_novelty"></div>
+												</div>
+												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="row">
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_novelty_name">
+																	<span>Nombre:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_novelty_name" id="field_novelty_name" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_name]; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_novelty_identification">
+																	<span>Identificacion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_novelty_identification" id="field_novelty_identification"class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_numeroid]; ?>">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div id="accordion" role="tablist" aria-multiselectable="true" class="m-b-20">
+														<div class="card">
+															<div class="card-header" role="tab" id="heading_1">
+																<h5 class="mb-0 mt-0 font-16">
+																	<a data-toggle="collapse" href="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
+																		<span>Datos Principales</span>
+																	</a>
+																</h5>
+															</div>
+															<div id="collapse_1" class="collapse show" role="tabpanel" aria-labelledby="heading_1">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_address_main">
+																					<span>Direccion Principal:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_address_main" id="field_address_main" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_direccion]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_work_direction">
+																					<span>Direccion Trabajo:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_work_direction" id="field_work_direction" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_direccion2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_email_1">
+																					<span>Correo Electronico 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_email_1" id="field_email_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_correo]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_email_2">
+																					<span>Correo Electronico 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_email_2" id="field_email_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_correo2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_phone_fixed_1">
+																					<span>Telefono 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_phone_fixed_1" id="field_phone_fixed_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_telefono]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_phone_fixed_2">
+																					<span>Telefono 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_phone_fixed_2" id="field_phone_fixed_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_telefono2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_phone_fixed_3">
+																					<span>Telefono 3:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_phone_fixed_3" id="field_phone_fixed_3" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_telefono3]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_phone_fixed_4">
+																					<span>Telefono 4:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_phone_fixed_4" id="field_phone_fixed_4" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_celular]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="card">
+															<div class="card-header" role="tab" id="heading_2">
+																<h5 class="mb-0 mt-0 font-16">
+																	<a class="collapsed" data-toggle="collapse" href="#collapse_2" aria-expanded="false" aria-controls="collapse_2">
+																		<span>Referencias Familiares</span>
+																	</a>
+																</h5>
+															</div>
+															<div id="collapse_2" class="collapse show" role="tabpanel" aria-labelledby="heading_2">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_names_surnames_1">
+																					<span>Nombres 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_names_surnames_1" id="field_ref_family_names_surnames_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_fam1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_address_1">
+																					<span>Direccion 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_address_1" id="field_ref_family_address_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_fam1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_phone_fixed_1">
+																					<span>Telefono 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_phone_fixed_1" id="field_ref_family_phone_fixed_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_fam1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_phone_movil_1">
+																					<span>Celular 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_phone_movil_1" id="field_ref_family_phone_movil_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_fam1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_names_surnames_2">
+																					<span>Nombres 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_names_surnames_2" id="field_ref_family_names_surnames_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_fam2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_address_2">
+																					<span>Direccion 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_address_2" id="field_ref_family_address_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_fam2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_phone_fixed_2">
+																					<span>Telefono 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_phone_fixed_2" id="field_ref_family_phone_fixed_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_fam2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_phone_movil_2">
+																					<span>Celular 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_phone_movil_2" id="field_ref_family_phone_movil_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_fam2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_names_surnames_3">
+																					<span>Nombres 3:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_names_surnames_3" id="field_ref_family_names_surnames_3" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_fam3]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_address_3">
+																					<span>Direccion 3:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_address_3" id="field_ref_family_address_3" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_fam3]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_phone_fixed_3">
+																					<span>Telefono 3:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_phone_fixed_3" id="field_ref_family_phone_fixed_3" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_fam3]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_family_phone_movil_3">
+																					<span>Celular 3:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_family_phone_movil_3" id="field_ref_family_phone_movil_3" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_fam3]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="card">
+															<div class="card-header" role="tab" id="heading_3">
+																<h5 class="mb-0 mt-0 font-16">
+																	<a class="collapsed" data-toggle="collapse" href="#collapse_3" aria-expanded="false" aria-controls="collapse_3">
+																		<span>Referencias Personales</span>
+																	</a>
+																</h5>
+															</div>
+															<div id="collapse_3" class="collapse show" role="tabpanel" aria-labelledby="heading_3">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_names_surnames_1">
+																					<span>Nombres 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_names_surnames_1" id="field_ref_personal_names_surnames_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_per1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_address_1">
+																					<span>Direccion 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_address_1" id="field_ref_personal_address_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_per1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_phone_fixed_1">
+																					<span>Telefono 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_phone_fixed_1" id="field_ref_personal_phone_fixed_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_per1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_phone_movil_1">
+																					<span>Celular 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_phone_movil_1" id="field_ref_personal_phone_movil_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_per1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_names_surnames_2">
+																					<span>Nombres 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_names_surnames_2" id="field_ref_personal_names_surnames_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_per2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_address_2">
+																					<span>Direccion 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_address_2" id="field_ref_personal_address_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_per2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_phone_fixed_2">
+																					<span>Telefono 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_phone_fixed_2" id="field_ref_personal_phone_fixed_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_per2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_personal_phone_movil_2">
+																					<span>Celular 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_personal_phone_movil_2" id="field_ref_personal_phone_movil_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_per2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="card">
+															<div class="card-header" role="tab" id="heading_4">
+																<h5 class="mb-0 mt-0 font-16">
+																	<a class="collapsed" data-toggle="collapse" href="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
+																		<span>Referencias Comerciales</span>
+																	</a>
+																</h5>
+															</div>
+															<div id="collapse_4" class="collapse show" role="tabpanel" aria-labelledby="heading_4">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_names_surnames_1">
+																					<span>Nombres 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_names_surnames_1" id="field_ref_commercial_names_surnames_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_com1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_address_1">
+																					<span>Direccion 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_address_1" id="field_ref_commercial_address_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_com1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_phone_fixed_1">
+																					<span>Telefono 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_phone_fixed_1" id="field_ref_commercial_phone_fixed_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_com1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_phone_movil_1">
+																					<span>Celular 1:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_phone_movil_1" id="field_ref_commercial_phone_movil_1" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_com1]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_names_surnames_2">
+																					<span>Nombres 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_names_surnames_2" id="field_ref_commercial_names_surnames_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_nom_ref_com2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_address_2">
+																					<span>Direccion 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_address_2" id="field_ref_commercial_address_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_dir_ref_com2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_phone_fixed_2">
+																					<span>Telefono 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_phone_fixed_2" id="field_ref_commercial_phone_fixed_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tel_ref_com2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																			<div class="form-group">
+																				<label for="field_ref_commercial_phone_movil_2">
+																					<span>Celular 2:</span>
+																				</label>
+																				<div class="input-group input-group-sm">
+																					<input type="text" name="field_ref_commercial_phone_movil_2" id="field_ref_commercial_phone_movil_2" class="form-control" placeholder="Digita el texto ..." value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_cel_ref_com2]; ?>">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<?php if ($_GET['field_definition'] == 2): ?>
+										<div class="tab-pane" id="proyection">
+											<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_itau_castigada_create_proyection">
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+														<div class="form-group">
+															<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_itau_castigada_create_proyection">
+																<em class="mdi mdi-content-save-all"></em>
+																<span>Guardar Registro</span>
+															</button>
+														</div>
+														<div class="hide" id="form_ajax_itau_castigada_proyection"></div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_name">
+																<span>Nombre:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_name" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_name]; ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_identification">
+																<span>Identificacion:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_identification" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_numeroid]; ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_number_product">
+																<span>Numero Producto:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_number_product" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_product_single[d_itau_c_he01_p_d_c_numero_producto]; ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_capital_balance">
+																<span>Saldo Capital:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_capital_balance" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= number_format($df_sql_controller_product_single[d_itau_c_he01_p_d_c_saldo_capital]); ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_campaign">
+																<span>Campaña:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_campaign" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_campaign]; ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_wallet_type">
+																<span>Tipo Cartera:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_wallet_type" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_tipify[d_itau_c_he01_d_d_c_tipocartera]; ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+														<div class="form-group">
+															<label for="field_projection_asesor">
+																<span>Usuario:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_asesor" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $df_sql_controller_users[d_itau_c_users_first_name] . ' ' . $df_sql_controller_users[d_itau_c_users_last_name]; ?>">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+														<div class="form-group">
+															<label for="field_projection_last_payment_value">
+																<span>Valor Pago:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_last_payment_value" id="field_projection_last_payment_value" class="form-control" placeholder="Digita el texto ..." required="" value="">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+														<div class="form-group">
+															<label for="field_projection_pay_date">
+																<span>Fecha Pago:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="date" name="field_projection_pay_date" id="field_projection_pay_date" class="form-control" placeholder="Digita el texto ..." required="" value="">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+														<div class="form-group">
+															<label for="field_projection_projection_value">
+																<span>Valor Proyeccion:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="text" name="field_projection_projection_value" id="field_projection_projection_value" class="form-control" placeholder="Digita el texto ..." required="" value="">
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+														<div class="form-group">
+															<label for="field_projection_date_projection">
+																<span>Fecha Proyeccion:</span>
+															</label>
+															<div class="input-group input-group-sm">
+																<input type="date" name="field_projection_date_projection" id="field_projection_date_projection" class="form-control" placeholder="Digita el texto ..." required="" value="">
+															</div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									<?php endif ?>
+									<div class="tab-pane" id="management">
+										<table id="datatable" class="table table-sm table-condensed table-striped table-bordered">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Tipificacion</th>
+													<th>Detalle</th>
+													<th>Nombres Apellidos</th>
+													<th>Telefono</th>
+													<th>Asesor</th>
+													<th>Fecha</th>
+													<th>Hora</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php if (false != $df_sql_controller_management): ?>
+													<?php foreach ($df_sql_controller_management as $key): ?>
+														<tr>
+															<td>#</td>
+															<td><?= $key[d_itau_c_he01_t_c_tipificacion]; ?></td>
+															<td><?= $key[d_itau_c_he01_t_c_detalle]; ?></td>
+															<td><?= $key[d_itau_c_he01_t_c_nombre]; ?></td>
+															<td><?= $key[d_itau_c_he01_t_c_telcontacto]; ?></td>
+															<td><?= $key[d_itau_c_he01_t_c_asesor]; ?></td>
+															<td><?= $key[d_itau_c_he01_t_c_fecha]; ?></td>
+															<td><?= $key[d_itau_c_he01_t_c_hora]; ?></td>
+														</tr>
+													<?php endforeach; ?>
+												<?php endif; ?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?= $this->insert('frontend/pattern/script'); ?>
+</body>
+</html>

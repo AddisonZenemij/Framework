@@ -1,0 +1,22 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							Ayuda
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

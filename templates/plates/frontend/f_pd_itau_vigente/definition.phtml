@@ -1,0 +1,60 @@
+<?= $this->insert('frontend/pattern/header'); ?>
+<body class="widescreen fixed-left-void">
+	<div id="wrapper" class="forced enlarged">
+		<?= $this->insert('frontend/pattern/topbar'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box">
+								<ul class="nav nav-tabs tabs-bordered">
+									<li class="nav-item">
+										<a href="#main" data-toggle="tab" aria-expanded="false" class="nav-link active">
+											<span>Principal</span>
+										</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="main">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+												<table id="datatable" class="table table-sm table-condensed table-striped table-bordered">
+													<thead>
+														<tr>
+															<th>#</th>
+															<th>Definicion</th>
+															<th>Acciones</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php if (false != $df_sql_controller_definition): ?>
+															<?php foreach ($df_sql_controller_definition as $key): ?>
+																<tr>
+																	<td>#</td>
+																	<td><?= $key['lbl_pd_type_definition_t_name']; ?></td>
+																	<td width="12%">
+																		<a href="<?= $df_var_controller; ?>tipify/<?= $_GET['field_id'] ?>/?field_session=<?= $_GET['field_session']; ?>&field_definition=<?= $key['lbl_pd_type_definition_id_pd_type_definition']; ?>" class="btn btn-sm btn-outline-dark">
+																			<em class="mdi mdi-pen"></em>
+																			<span>Cargar Informacion</span>
+																		</a>
+																	</td>
+																</tr>
+															<?php endforeach; ?>
+														<?php endif; ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?= $this->insert('frontend/pattern/script'); ?>
+</body>
+</html>

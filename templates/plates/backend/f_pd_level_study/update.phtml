@@ -1,0 +1,97 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box table-responsive">
+								<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_update_pd_level_study">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+													<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+													<span>Listar Resultados</span>
+												</a>
+												<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_update_pd_level_study">
+													<em class="mdi mdi-rotate-3d"></em>
+													<span>Actualizar Registro</span>
+												</button>
+											</div>
+											<div class="hide" id="form_ajax_pd_level_study"></div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Id:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_id" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $_GET['field_id']; ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Nombre:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_name" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update[d_pd_level_study_t_name]; ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Estado:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_state" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_controller_read_state): ?>
+															<?php foreach ($df_sql_controller_read_state as $key): ?>
+																<?php if ($key['lbl_az_state_t_value'] == $df_sql_controller_update[d_pd_level_study_m_status]): ?>
+																	<option value="<?= $key['lbl_az_state_t_value']; ?>" selected>
+																		<?= $key['lbl_az_state_t_name']; ?>
+																	</option>
+																<?php else: ?>
+																	<option value="<?= $key['lbl_az_state_t_value']; ?>">
+																		<?= $key['lbl_az_state_t_name']; ?>
+																	</option>
+																<?php endif ?>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Descripcion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<textarea name="field_description" class="form-control" placeholder="Digita el texto ..." required="" rows="5"><?= $df_sql_controller_update[d_pd_level_study_m_description]; ?></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

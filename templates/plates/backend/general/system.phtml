@@ -1,0 +1,34 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<h1 class="text-center">
+								<i class="ti-face-sad text-danger"></i>
+								<span>Oops!</span> - <span class="text-success">Error 505</span>
+							</h1>
+							<h4 class="text-center">
+								Esta pagina no se pudo encontrar o no se encuentra disponible en el sistema.
+							</h4>
+							<h4 class="text-center">
+								Parece que la pagina que esta intentando cargar no existe. Lamentamos la incindencia.
+							</h4>
+							<h4 class="text-center">
+								Contactate con el administrador de la pagina web.
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

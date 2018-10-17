@@ -1,0 +1,464 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box table-responsive">
+								<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_create_pd_data_personal">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+													<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+													<span>Listar Resultados</span>
+												</a>
+												<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_create_pd_data_personal">
+													<em class="mdi mdi-content-save-all"></em>
+													<span>Guardar Registro</span>
+												</button>
+											</div>
+											<div class="hide" id="form_ajax_pd_data_personal"></div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group bg-white">
+												<div class="modal-content">
+													<div class="modal-header bg-white">
+														<label>
+															<span>Datos Personales</span>
+														</label>
+													</div>
+													<div class="modal-body">
+														<div class="row">
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Nombres:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_names" id="field_names" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Apellidos:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_surnames" id="field_surnames" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Tipo Documento:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_document_type" id="field_document_type" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_document_type): ?>
+																				<?php foreach ($df_sql_select_tc_pd_document_type as $key): ?>
+																					<option value="<?= $key[d_pd_document_type_id_pd_document_type]; ?>">
+																						<?= $key[d_pd_document_type_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Identificacion:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_identification" id="field_identification" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Telefono Fijo:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_phone_fixed" id="field_phone_fixed" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Telefono Movil:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_phone_movil" id="field_phone_movil" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Correo Electronico:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_email" id="field_email" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Direccion:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_address" id="field_address" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Fecha Nacimiento:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="date" name="field_birth_date" id="field_birth_date" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Lugar Nacimiento:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_birth_place" id="field_birth_place" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_birth_place): ?>
+																				<?php foreach ($df_sql_select_tc_pd_birth_place as $key): ?>
+																					<option value="<?= $key[d_pd_birth_place_id_pd_birth_place]; ?>">
+																						<?= $key[d_pd_birth_place_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Estado Civil:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_civil_status" id="field_civil_status" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_civil_status): ?>
+																				<?php foreach ($df_sql_select_tc_pd_civil_status as $key): ?>
+																					<option value="<?= $key[d_pd_civil_status_id_pd_civil_status]; ?>">
+																						<?= $key[d_pd_civil_status_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Eps:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_eps" id="field_eps" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_eps): ?>
+																				<?php foreach ($df_sql_select_tc_pd_eps as $key): ?>
+																					<option value="<?= $key[d_pd_eps_id_pd_eps]; ?>">
+																						<?= $key[d_pd_eps_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Nivel Estudio:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_level_study" id="field_level_study" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_level_study): ?>
+																				<?php foreach ($df_sql_select_tc_pd_level_study as $key): ?>
+																					<option value="<?= $key[d_pd_level_study_id_pd_level_study]; ?>">
+																						<?= $key[d_pd_level_study_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Barrio:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_neighborhood" id="field_neighborhood" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_neighborhood): ?>
+																				<?php foreach ($df_sql_select_tc_pd_neighborhood as $key): ?>
+																					<option value="<?= $key[d_pd_neighborhood_id_pd_neighborhood]; ?>">
+																						<?= $key[d_pd_neighborhood_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+																<div class="form-group">
+																	<label>
+																		<span>Pension:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_pension" id="field_pension" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_pension): ?>
+																				<?php foreach ($df_sql_select_tc_pd_pension as $key): ?>
+																					<option value="<?= $key[d_pd_pension_id_pd_pension]; ?>">
+																						<?= $key[d_pd_pension_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group bg-white">
+												<div class="modal-content">
+													<div class="modal-header bg-white">
+														<label>
+															<span>Datos Empresariales</span>
+														</label>
+													</div>
+													<div class="modal-body">
+														<div class="row">
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Rediferido:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_data_personal" id="field_data_personal" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<option value="Ninguno">Ninguno</option>
+																			<?php if (false != $df_sql_select_tc_pd_data_personal): ?>
+																				<?php foreach ($df_sql_select_tc_pd_data_personal as $key): ?>
+																					<option value="<?= $key[d_pd_data_personal_id_pd_data_personal]; ?>">
+																						<?= $key[d_pd_data_personal_t_names] . ' ' . $key[d_pd_data_personal_t_surnames]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Fecha Ingreso:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="date" name="field_date_admission" id="field_date_admission" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Fecha Terminacion Contrato:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="date" name="field_date_contract_termination" id="field_date_contract_termination" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Valor Bono:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<input type="text" name="field_value_bonus" id="field_value_bonus" class="form-control" placeholder="Digita el texto ..." required="">
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Campaña:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_campaign" id="field_campaign" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_campaign): ?>
+																				<?php foreach ($df_sql_select_tc_pd_campaign as $key): ?>
+																					<option value="<?= $key[d_pd_campaign_id_pd_campaign]; ?>">
+																						<?= $key[d_pd_campaign_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Tipo Contrato:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_contract_type" id="field_contract_type" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_contract_type): ?>
+																				<?php foreach ($df_sql_select_tc_pd_contract_type as $key): ?>
+																					<option value="<?= $key[d_pd_contract_type_id_pd_contract_type]; ?>">
+																						<?= $key[d_pd_contract_type_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Cargo:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_employee_charge" id="field_employee_charge" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_employee_charge): ?>
+																				<?php foreach ($df_sql_select_tc_pd_employee_charge as $key): ?>
+																					<option value="<?= $key[d_pd_employee_charge_id_pd_employee_charge]; ?>">
+																						<?= $key[d_pd_employee_charge_t_name]; ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Salario Base:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_base_salary" id="field_base_salary" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_base_salary): ?>
+																				<?php foreach ($df_sql_select_tc_pd_base_salary as $key): ?>
+																					<option value="<?= $key[d_pd_base_salary_id_pd_base_salary]; ?>">
+																						<?= number_format($key[d_pd_base_salary_t_value]); ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+																<div class="form-group">
+																	<label>
+																		<span>Auxilio Transporte:</span>
+																	</label>
+																	<div class="input-group input-group-sm">
+																		<select name="field_transport_assistance" id="field_transport_assistance" class="form-control" required="">
+																			<option value="0">Seleccionar</option>
+																			<?php if (false != $df_sql_select_tc_pd_transport_assistance): ?>
+																				<?php foreach ($df_sql_select_tc_pd_transport_assistance as $key): ?>
+																					<option value="<?= $key[d_pd_transport_assistance_id_pd_transport_assistance]; ?>">
+																						<?= number_format($key[d_pd_transport_assistance_t_value]); ?>
+																					</option>
+																				<?php endforeach; ?>
+																			<?php else: ?>
+																				<option value="0">No existen resultados</option>
+																			<?php endif; ?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Descripcion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<textarea name="field_description" id="field_description" class="form-control" placeholder="Digita el texto ..." required="" rows="5"></textarea>
+												</div>
+											</div>
+										</div>-->
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

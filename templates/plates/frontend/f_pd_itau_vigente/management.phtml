@@ -1,0 +1,48 @@
+<?= $this->insert('frontend/pattern/header'); ?>
+<body class="widescreen fixed-left-void">
+	<div id="wrapper" class="forced enlarged">
+		<?= $this->insert('frontend/pattern/topbar'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table id="datatable" class="table table-sm table-condensed table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Tipificacion</th>
+										<th>Detalle</th>
+										<th>Nombres Apellidos</th>
+										<th>Telefono</th>
+										<th>Asesor</th>
+										<th>Fecha</th>
+										<th>Hora</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if (false != $df_sql_controller_management): ?>
+										<?php foreach ($df_sql_controller_management as $key): ?>
+											<tr>
+												<td>#</td>
+												<td><?= $key[d_itau_v_he01_t_v_tipificacion]; ?></td>
+												<td><?= $key[d_itau_v_he01_t_v_detalle]; ?></td>
+												<td><?= $key[d_itau_v_he01_t_v_nombre]; ?></td>
+												<td><?= $key[d_itau_v_he01_t_v_telcontacto]; ?></td>
+												<td><?= $key[d_itau_v_he01_t_v_asesor]; ?></td>
+												<td><?= $key[d_itau_v_he01_t_v_fecha]; ?></td>
+												<td><?= $key[d_itau_v_he01_t_v_hora]; ?></td>
+											</tr>
+										<?php endforeach; ?>
+									<?php endif; ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?= $this->insert('frontend/pattern/script'); ?>
+</body>
+</html>

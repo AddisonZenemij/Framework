@@ -1,0 +1,54 @@
+<?= $this->insert('frontend/pattern/header'); ?>
+<body class="widescreen fixed-left-void">
+	<div id="wrapper" class="forced enlarged">
+		<?= $this->insert('frontend/pattern/topbar'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table id="datatable" class="table table-sm table-condensed table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Numero Producto</th>
+										<th>Nombre Producto</th>
+										<th>Dias Refresque</th>
+										<th>Rango Mora</th>
+										<th>Gestion Mega Ranking</th>
+										<th>Pago Minimo</th>
+										<th>Saldo Total</th>
+										<th>Capital Refresque</th>
+										<th>Total Intereses</th>
+										<th>Provision Total</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if (false != $df_sql_controller_product): ?>
+										<?php foreach ($df_sql_controller_product as $key): ?>
+											<tr>
+												<td>#</td>
+												<td><?= substr($key[d_itau_v_he01_p_d_v_numeroproducto], -6); ?></td>
+												<td><?= $key[d_itau_v_he01_p_d_v_nombreproducto]; ?></td>
+												<td><?= $key[d_itau_v_he01_p_d_v_dias_refresque]; ?></td>
+												<td><?= $key[d_itau_v_he01_p_d_v_rangomora]; ?></td>
+												<td><?= $key[d_itau_v_he01_p_d_v_gestion_mega_ranking]; ?></td>
+												<td>$ <?= number_format($key[d_itau_v_he01_p_d_v_pagominimo]); ?></td>
+												<td>$ <?= number_format($key[d_itau_v_he01_p_d_v_saldototal]); ?></td>
+												<td>$ <?= number_format($key[d_itau_v_he01_p_d_v_capital_refresque]); ?></td>
+												<td>$ <?= number_format($key[d_itau_v_he01_p_d_v_total_intereses]); ?></td>
+												<td>$ <?= number_format($key[d_itau_v_he01_p_d_v_provision_total]); ?></td>
+											</tr>
+										<?php endforeach; ?>
+									<?php endif; ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?= $this->insert('frontend/pattern/script'); ?>
+</body>
+</html>

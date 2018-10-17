@@ -1,0 +1,113 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<?php if (false != $df_sql_permits_t_value_read_all): ?>
+									<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+										<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+										<span>Listar Resultados</span>
+									</a>
+								<?php endif ?>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="form-group bg-inverse">
+								<div class="modal-content">
+									<div class="modal-header bg-white">
+										<strong>Datos Principales</strong>
+									</div>
+									<div class="modal-body">
+										<p class="text-inverse">
+											<span>Nombre:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_icon_t_name']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Categoria:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_category_icon_t_name']; ?>
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="form-group bg-inverse">
+								<div class="modal-content">
+									<div class="modal-header bg-white">
+										<strong>Datos Adicionales</strong>
+									</div>
+									<div class="modal-body">
+										<p class="text-inverse">
+											<span>Identificador:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_icon_id_az_icon']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Creado Por:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_user_t_login_created']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Modificado Por:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_user_t_login_modified']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Fecha Creacion:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_icon_m_date_created']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Fecha Modificacion:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_icon_m_date_modified']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Nivel:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_level_t_name']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Estado:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_state_t_name']; ?>
+											</span>
+										</p>
+										<p class="text-inverse">
+											<span>Descripcion:</span>
+											<span class="m-l-15">
+												<?= $df_sql_controller_detail['lbl_az_icon_m_description']; ?>
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

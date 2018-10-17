@@ -1,0 +1,54 @@
+		<?php $var_m_dvdesign = new dvdesignModel; ?>
+		<div class="left side-menu">
+			<div class="sidebar-inner slimscrollleft">
+				<div id="sidebar-menu">
+					<ul>
+						<?php $df_sql_permits_t_menu_value = $var_m_dvdesign->sql_permits_t_menu_value(); ?>
+						<?php if (false != $df_sql_permits_t_menu_value): ?>
+							<?php foreach ($df_sql_permits_t_menu_value as $key_menu_value): ?>
+								<li>
+									<a href="<?= $key_menu_value['lbl_az_menu_crud_t_url'] ?>read/" class="waves-effect waves-primary">
+										<i class="waves-effect <?= $key_menu_value['lbl_az_icon_t_name'] ?>"></i>
+										<span><?= $key_menu_value['lbl_az_menu_crud_t_name'] ?></span>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						<?php endif; ?>
+						<?php /*$df_sql_tc_az_menu_crud_group_by_id = $var_m_dvdesign->sql_tc_az_menu_crud_group_by_id(); ?>
+						<?php if (false != $df_sql_tc_az_menu_crud_group_by_id): ?>
+							<?php foreach ($df_sql_tc_az_menu_crud_group_by_id as $key_group_by): ?>
+								<li class="has_sub">
+									<a href="javascript:void(0);" class="waves-effect waves-primary">
+										<i class="waves-effect <?= $key_group_by['lbl_az_icon_t_name'] ?>"></i>
+										<span><?= $key_group_by['lbl_az_menu_crud_t_name'] ?></span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul class="list-unstyled">
+										<li>
+											<a href="<?= $key_group_by['lbl_az_menu_crud_t_url'] ?>read/" class="waves-effect waves-primary">
+												<i class="waves-effect <?= $key_group_by['lbl_az_icon_t_name'] ?>"></i>
+												<span><?= $key_group_by['lbl_az_menu_crud_t_name'] ?></span>
+											</a>
+										</li>
+										<?php $df_sql_tc_az_menu_crud_order_by = $var_m_dvdesign->sql_tc_az_menu_crud_order_by($key_group_by['lbl_az_menu_crud_id_az_menu_crud']); ?>
+										<?php if (false != $df_sql_tc_az_menu_crud_order_by): ?>
+											<?php foreach ($df_sql_tc_az_menu_crud_order_by as $key_order_by): ?>
+												<li>
+													<a href="<?= $key_order_by['lbl_az_menu_crud_t_url'] ?>read/" class="waves-effect waves-primary">
+														<i class="waves-effect <?= $key_order_by['lbl_az_icon_t_name'] ?>"></i>
+														<span><?= $key_order_by['lbl_az_menu_crud_t_name'] ?></span>
+													</a>
+												</li>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</ul>
+								</li>
+							<?php endforeach; ?>
+						<?php endif*/; ?>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		

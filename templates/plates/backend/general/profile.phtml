@@ -1,0 +1,225 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
+									<div class="text-center card-box">
+										<div class="member-card">
+											<div class="thumb-xl member-thumb m-b-10 center-block">
+												<img src="views/backend/assets/images/users/avatar-1.jpg" class="rounded-circle img-thumbnail" alt="profile-image">
+											</div>
+											<div class="">
+												<h5 class="m-b-5">Mark McKnight</h5>
+												<p class="text-muted">@webdesigner</p>
+											</div>
+											<button type="button" class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light">
+												<span>Follow</span>
+											</button>
+											<button type="button" class="btn btn-danger btn-sm w-sm waves-effect m-t-10 waves-light">
+												<span>Message</span>
+											</button>
+											<div class="text-left m-t-40">
+												<p class="text-muted font-13">
+													<strong>Correo Electronico:</strong>
+													<span><?= $df_sql_controller_detail['lbl_az_user_t_email']; ?></span>
+												</p>
+												<p class="text-muted font-13">
+													<strong>Ultima Conexion:</strong>
+													<span><?= $df_sql_controller_detail['lbl_az_user_t_last_connection']; ?></span>
+												</p>
+												<p class="text-muted font-13">
+													<strong>Usuario:</strong>
+													<span><?= $df_sql_controller_detail['lbl_az_user_t_login']; ?></span>
+												</p>
+												<p class="text-muted font-13">
+													<strong>Rol:</strong>
+													<span><?= $df_sql_controller_detail['lbl_az_role_t_name']; ?></span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
+									<div class="card-box">
+										<ul class="nav nav-tabs tabs-bordered">
+											<li class="nav-item">
+												<a href="#data_personal" data-toggle="tab" aria-expanded="false" class="nav-link active">
+													<span>Datos Personales</span>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="#data_password" data-toggle="tab" aria-expanded="false" class="nav-link">
+													<span>Contraseña</span>
+												</a>
+											</li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="data_personal">
+												<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_update_zv_profile">
+													<div class="row">
+														<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+															<div class="form-group">
+																<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_update_zv_profile">
+																	<em class="mdi mdi-rotate-3d"></em>
+																	<span>Actualizar Mi Perfil</span>
+																</button>
+															</div>
+															<div class="hide" id="form_ajax_zv_profile"></div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_names">
+																	<span>Nombres:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_names" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update['lbl_az_data_personal_t_names']; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_surnames">
+																	<span>Apellidos:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_surnames" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update['lbl_az_data_personal_t_surnames']; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label>
+																	<span>Telefono Fijo:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_phone_fixed" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update['lbl_az_data_personal_t_phone_fixed']; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label>
+																	<span>Telefono Movil:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_phone_movil" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update['lbl_az_data_personal_t_phone_movil']; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label>
+																	<span>Direccion:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="text" name="field_address" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update['lbl_az_data_personal_t_address']; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label>
+																	<span>Fecha Nacimiento:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="date" name="field_birth_date" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update['lbl_az_data_personal_t_birth_date']; ?>">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label>
+																	<span>Pais:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<select name="field_country" class="form-control" required="">
+																		<option value="0">Seleccionar</option>
+																		<?php if (false != $df_sql_select_tc_az_country): ?>
+																			<?php foreach ($df_sql_select_tc_az_country as $key): ?>
+																				<?php if ($key[d_az_country_id_az_country] == $df_sql_controller_update['lbl_az_data_personal_v_id_az_country']): ?>
+																					<option value="<?= $key[d_az_country_id_az_country]; ?>" selected>
+																						<?= $key[d_az_country_t_name]; ?>
+																					</option>
+																				<?php else: ?>
+																					<option value="<?= $key[d_az_country_id_az_country]; ?>">
+																						<?= $key[d_az_country_t_name]; ?>
+																					</option>
+																				<?php endif ?>
+																			<?php endforeach; ?>
+																		<?php else: ?>
+																			<option value="0">No existen resultados</option>
+																		<?php endif; ?>
+																	</select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+											<div class="tab-pane" id="data_password">
+												<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_update_zv_password">
+													<div class="row">
+														<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+															<div class="form-group">
+																<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_update_zv_password">
+																	<em class="mdi mdi-rotate-3d"></em>
+																	<span>Actualizar Mi Contraseña</span>
+																</button>
+															</div>
+															<div class="hide" id="form_ajax_zv_password"></div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_password_new">
+																	<span>Nueva Contraseña:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="password" name="field_password_new" id="field_password_new" class="form-control" placeholder="Digita el texto ..." required="">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_password_confirm">
+																	<span>Confirmar Contraseña:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="password" name="field_password_confirm" id="field_password_confirm" class="form-control" placeholder="Digita el texto ..." required="">
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+															<div class="form-group">
+																<label for="field_password_current">
+																	<span>Contraseña Actual:</span>
+																</label>
+																<div class="input-group input-group-sm">
+																	<input type="password" name="field_password_current" id="field_password_current" class="form-control" placeholder="Digita el texto ..." required="">
+																</div>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box table-responsive">
+								<div class="form-group">
+									<?php if (false != $df_sql_permits_t_value_read_all): ?>
+										<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+											<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+											<span>Listar Resultados</span>
+										</a>
+									<?php endif ?>
+								</div>
+								<table class="table table-sm table-condensed table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Tipo</th>
+											<th>Menu</th>
+											<th>Modulo</th>
+											<th>Cambios</th>
+											<th>Crear</th>
+											<th>Eliminar</th>
+											<th>Detalles</th>
+											<th>Error</th>
+											<th>Listar</th>
+											<th>Eliminados</th>
+											<th>Remover</th>
+											<th>Actualizar</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php if (false != $df_sql_controller_az_a_p_read): ?>
+											<?php foreach ($df_sql_controller_az_a_p_read as $key): ?>
+												<tr>
+													<td><?= $key['lbl_az_menu_crud_t_name']; ?></td>
+													<td><?= $key['lbl_az_category_menu_t_name']; ?></td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_menu_value'] == "1") {
+																echo '<span class="text-success">Permitido</span>';
+															} else if ($key['lbl_az_authorized_permits_t_menu_value'] == "2") {
+																echo '<span class="text-danger">Inhabilitado</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_module_value'] == "1") {
+																echo '<span class="text-success">Permitido</span>';
+															} else if ($key['lbl_az_authorized_permits_t_module_value'] == "2") {
+																echo '<span class="text-danger">Inhabilitado</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_change'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_change'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_create'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_create'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_delete'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_delete'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_detail'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_detail'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_error'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_error'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_read_all'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_read_all'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_read_eliminate'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_read_eliminate'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_remove'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_remove'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php
+															if ($key['lbl_az_authorized_permits_t_value_update'] == "1") {
+																echo '<span class="text-success">Activo</span>';
+															} else if ($key['lbl_az_authorized_permits_t_value_update'] == "2") {
+																echo '<span class="text-danger">Inactivo</span>';
+															}
+														?>
+													</td>
+													<td>
+														<?php if (false != $df_sql_permits_t_value_update): ?>
+															<a href="<?= $df_var_controller; ?>azapupdate/<?= $key['lbl_az_authorized_permits_id_az_authorized_permits']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-pen"></em>
+															</a>
+														<?php endif ?>
+													</td>
+												</tr>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

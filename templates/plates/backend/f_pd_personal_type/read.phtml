@@ -1,0 +1,90 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<?php if (false != $df_sql_tc_az_sub_menu_crud_order_by): ?>
+								<div class="form-group">
+									<?php foreach ($df_sql_tc_az_sub_menu_crud_order_by as $key_sub_menu_crud): ?>
+										<a href="<?= $key_sub_menu_crud['lbl_az_menu_crud_t_url']; ?>read/" class="btn btn-sm btn-outline-dark">
+											<em class="<?= $key_sub_menu_crud['lbl_az_icon_t_name']; ?>"></em>
+											<span><?= $key_sub_menu_crud['lbl_az_menu_crud_t_name']; ?></span>
+										</a>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+							<div class="card-box table-responsive">
+								<div class="form-group">
+									<?php if (false != $df_sql_permits_t_value_create): ?>
+										<a href="<?= $df_var_controller; ?>create/" class="btn btn-sm btn-outline-success">
+											<em class="mdi mdi-plus-circle-multiple-outline"></em>
+											<span>Añadir Registro Nuevo</span>
+										</a>
+									<?php endif ?>
+									<?php if (false != $df_sql_permits_t_value_read_eliminate): ?>
+										<a href="<?= $df_var_controller; ?>eliminate/" class="btn btn-sm btn-outline-danger">
+											<em class="mdi mdi-delete-forever"></em>
+											<span>Registros Eliminados</span>
+										</a>
+									<?php endif ?>
+								</div>
+								<table id="datatable-buttons" class="table table-sm table-condensed table-striped table-bordered">
+									<thead>
+										<tr>
+											<th width="1%">#</th>
+											<th>Nombre</th>
+											<th>Creado Por</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php if (false != $df_sql_controller_read): ?>
+											<?php foreach ($df_sql_controller_read as $key): ?>
+												<tr>
+													<td width="1%">#</td>
+													<td><?= $key['lbl_pd_personal_type_t_name']; ?></td>
+													<td><?= $key['lbl_az_user_t_login_created']; ?></td>
+													<td width="13%">
+														<?php if (false != $df_sql_permits_t_value_update): ?>
+															<a href="<?= $df_var_controller; ?>update/<?= $key['lbl_pd_personal_type_id_pd_personal_type']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-pen"></em>
+															</a>
+														<?php endif ?>
+														<?php if (false != $df_sql_permits_t_value_change): ?>
+															<a href="<?= $df_var_controller; ?>change/<?= $key['lbl_pd_personal_type_id_pd_personal_type']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-autorenew"></em>
+															</a>
+														<?php endif ?>
+														<?php if (false != $df_sql_permits_t_value_detail): ?>
+															<a href="<?= $df_var_controller; ?>detail/<?= $key['lbl_pd_personal_type_id_pd_personal_type']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-format-list-numbers"></em>
+															</a>
+														<?php endif ?>
+														<?php if (false != $df_sql_permits_t_value_remove): ?>
+															<a href="<?= $df_var_controller; ?>remove/<?= $key['lbl_pd_personal_type_id_pd_personal_type']; ?>/" class="btn btn-sm btn-outline-danger">
+																<em class="mdi mdi-delete-forever"></em>
+															</a>
+														<?php endif ?>
+													</td>
+												</tr>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

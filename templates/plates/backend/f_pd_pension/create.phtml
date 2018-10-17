@@ -1,0 +1,60 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box table-responsive">
+								<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_create_pd_pension">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+													<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+													<span>Listar Resultados</span>
+												</a>
+												<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_create_pd_pension">
+													<em class="mdi mdi-content-save-all"></em>
+													<span>Guardar Registro</span>
+												</button>
+											</div>
+											<div class="hide" id="form_ajax_pd_pension"></div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Nombre:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_name" id="field_name" class="form-control" placeholder="Digita el texto ..." required="">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Descripcion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<textarea name="field_description" id="field_description" class="form-control" placeholder="Digita el texto ..." required="" rows="5"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

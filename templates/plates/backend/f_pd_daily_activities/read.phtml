@@ -1,0 +1,137 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<?php if (false != $df_sql_tc_az_sub_menu_crud_order_by): ?>
+								<div class="form-group">
+									<?php foreach ($df_sql_tc_az_sub_menu_crud_order_by as $key_sub_menu_crud): ?>
+										<a href="<?= $key_sub_menu_crud['lbl_az_menu_crud_t_url']; ?>read/" class="btn btn-sm btn-outline-dark">
+											<em class="<?= $key_sub_menu_crud['lbl_az_icon_t_name']; ?>"></em>
+											<span><?= $key_sub_menu_crud['lbl_az_menu_crud_t_name']; ?></span>
+										</a>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+							<div class="card-box table-responsive">
+								<div class="form-group">
+									<?php if (false != $df_sql_permits_t_value_create): ?>
+										<a href="<?= $df_var_controller; ?>create/" class="btn btn-sm btn-outline-success">
+											<em class="mdi mdi-plus-circle-multiple-outline"></em>
+											<span>Añadir Registro Nuevo</span>
+										</a>
+									<?php endif ?>
+									<?php if (false != $df_sql_permits_t_value_read_eliminate): ?>
+										<a href="<?= $df_var_controller; ?>eliminate/" class="btn btn-sm btn-outline-danger">
+											<em class="mdi mdi-delete-forever"></em>
+											<span>Registros Eliminados</span>
+										</a>
+									<?php endif ?>
+								</div>
+								<table id="datatable-buttons" class="table table-sm table-condensed table-striped table-bordered">
+									<thead>
+										<tr>
+											<th width="1%">#</th>
+											<th>Nombre</th>
+											<th>Fecha</th>
+											<th>Creado Por</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php if (false != $df_sql_controller_read): ?>
+											<?php foreach ($df_sql_controller_read as $key): ?>
+												<tr>
+													<td width="1%">#</td>
+													<td><?= $key['lbl_pd_daily_activities_t_name']; ?></td>
+													<td><?= $key['lbl_pd_daily_activities_t_date']; ?></td>
+													<td><?= $key['lbl_az_user_t_login_created']; ?></td>
+													<td width="13%">
+														<?php if (false != $df_sql_permits_t_value_update): ?>
+															<a href="<?= $df_var_controller; ?>update/<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-pen"></em>
+															</a>
+														<?php endif ?>
+														<?php if (false != $df_sql_permits_t_value_change): ?>
+															<a href="<?= $df_var_controller; ?>change/<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-autorenew"></em>
+															</a>
+														<?php endif ?>
+														<?php if (false != $df_sql_permits_t_value_detail): ?>
+															<a href="<?= $df_var_controller; ?>detail/<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>/" class="btn btn-sm btn-outline-dark">
+																<em class="mdi mdi-format-list-numbers"></em>
+															</a>
+														<?php endif ?>
+														<?php if (false != $df_sql_permits_t_value_remove): ?>
+															<!--<a href="<?= $df_var_controller; ?>remove/<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>/" class="btn btn-sm btn-outline-danger">
+																<em class="mdi mdi-delete-forever"></em>
+															</a>-->
+															<!--<button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target=".bs-example-modal-sm">
+																<em class="mdi mdi-delete-forever"></em>
+															</button>-->
+															<a href="#myModalRemove<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>" class="btn btn-sm btn-outline-danger" id="bd_id_modal" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="_ini_modal_remove_pd_daily_activities();">
+																<em class="mdi mdi-delete-forever"></em>
+															</a>
+														<?php endif ?>
+													</td>
+												</tr>
+
+
+												<div class="modal fade bs-example-modal-sm" id="myModalRemove<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;" data-keyboard="false" data-backdrop="static">
+													<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_create_pd_daily_activities">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h6 class="text-inverse" id="mySmallModalLabel">Eliminar Registro</h6>
+																</div>
+																<div class="modal-body">
+																	Puedes editarla si solo necesitas cambiar algo.
+																	<span><?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?></span>
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-sm btn-outline-dark" data-dismiss="modal">
+																		<em class="mdi mdi-content-save-all"></em>
+																		<span>Cancelar</span>
+																	</button>
+																	<?php if (false != $df_sql_permits_t_value_update): ?>
+																		<a href="<?= $df_var_controller; ?>update/<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>/" class="btn btn-sm btn-outline-dark">
+																			<em class="mdi mdi-pen"></em>
+																			<span>Editar</span>
+																		</a>
+																	<?php endif ?>
+																	<?php if (false != $df_sql_permits_t_value_remove): ?>
+																		<button type="button" class="btn btn-sm btn-outline-danger" id="form_btn_remove_pd_daily_activities">
+																			<em class="mdi mdi-delete-forever"></em>
+																			<span>Remover</span>
+																		</button>
+																	<?php endif ?>
+																	<!--<a href="<?= $df_var_controller; ?>remove/<?= $key['lbl_pd_daily_activities_id_pd_daily_activities']; ?>/" class="btn btn-sm btn-outline-danger">
+																		<em class="mdi mdi-delete-forever"></em>
+																		<span>Eliminar Registro</span>
+																	</a>-->
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>

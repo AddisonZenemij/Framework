@@ -1,0 +1,198 @@
+<?= $this->insert('backend/design/header'); ?>
+<body class="fixed-left">
+	<div id="wrapper">
+		<?= $this->insert('backend/design/topbar'); ?>
+		<?= $this->insert('backend/design/sidebar-start'); ?>
+		<div class="content-page">
+			<div class="content">
+				<div class="container-fluid">
+					<?= $this->insert('backend/design/content-menu'); ?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="card-box table-responsive">
+								<form class="form-horizontal" role="form" enctype="application/x-www-form-urlencoded" id="form_update_pd_management_tree">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<a href="<?= $df_var_controller; ?>read/" class="btn btn-sm btn-outline-dark">
+													<em class="mdi mdi-arrow-left-bold-hexagon-outline"></em>
+													<span>Listar Resultados</span>
+												</a>
+												<button type="button" class="btn btn-sm btn-outline-success" id="form_btn_update_pd_management_tree">
+													<em class="mdi mdi-rotate-3d"></em>
+													<span>Actualizar Registro</span>
+												</button>
+											</div>
+											<div class="hide" id="form_ajax_pd_management_tree"></div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Id:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_id" class="form-control" placeholder="Digita el texto ..." required="" readonly="" value="<?= $_GET['field_id']; ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Nombre:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_name" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update[d_pd_management_tree_t_name]; ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Codigo Principal:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_main_code" id="field_main_code" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update[d_pd_management_tree_t_main_code]; ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Codigo Mejor Gestion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<input type="text" name="field_best_management_code" id="field_best_management_code" class="form-control" placeholder="Digita el texto ..." required="" value="<?= $df_sql_controller_update[d_pd_management_tree_t_best_management_code]; ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Campaña:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_campaign" id="field_campaign" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_select_tc_pd_campaign): ?>
+															<?php foreach ($df_sql_select_tc_pd_campaign as $key): ?>
+																<?php if ($key[d_pd_campaign_id_pd_campaign] == $df_sql_controller_update[d_pd_management_tree_v_id_pd_campaign]): ?>
+																	<option value="<?= $key[d_pd_campaign_id_pd_campaign]; ?>" selected>
+																		<?= $key[d_pd_campaign_t_name]; ?>
+																	</option>
+																<?php else: ?>
+																	<option value="<?= $key[d_pd_campaign_id_pd_campaign]; ?>">
+																		<?= $key[d_pd_campaign_t_name]; ?>
+																	</option>
+																<?php endif ?>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Tipo Definicion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_type_definition" id="field_type_definition" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_select_tc_pd_type_definition): ?>
+															<?php foreach ($df_sql_select_tc_pd_type_definition as $key): ?>
+																<?php if ($key[d_pd_type_definition_id_pd_type_definition] == $df_sql_controller_update[d_pd_management_tree_v_id_pd_type_definition]): ?>
+																	<option value="<?= $key[d_pd_type_definition_id_pd_type_definition]; ?>" selected>
+																		<?= $key[d_pd_type_definition_t_name]; ?>
+																	</option>
+																<?php else: ?>
+																	<option value="<?= $key[d_pd_type_definition_id_pd_type_definition]; ?>">
+																		<?= $key[d_pd_type_definition_t_name]; ?>
+																	</option>
+																<?php endif ?>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Tipo Gestion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_type_management" id="field_type_management" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_select_tc_pd_type_management): ?>
+															<?php foreach ($df_sql_select_tc_pd_type_management as $key): ?>
+																<?php if ($key[d_pd_type_management_id_pd_type_management] == $df_sql_controller_update[d_pd_management_tree_v_id_pd_type_management]): ?>
+																	<option value="<?= $key[d_pd_type_management_id_pd_type_management]; ?>" selected>
+																		<?= $key[d_pd_type_management_t_name]; ?>
+																	</option>
+																<?php else: ?>
+																	<option value="<?= $key[d_pd_type_management_id_pd_type_management]; ?>">
+																		<?= $key[d_pd_type_management_t_name]; ?>
+																	</option>
+																<?php endif ?>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>
+													<span>Estado:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<select name="field_state" class="form-control" required="">
+														<option value="0">Seleccionar</option>
+														<?php if (false != $df_sql_controller_read_state): ?>
+															<?php foreach ($df_sql_controller_read_state as $key): ?>
+																<?php if ($key['lbl_az_state_t_value'] == $df_sql_controller_update[d_pd_management_tree_m_status]): ?>
+																	<option value="<?= $key['lbl_az_state_t_value']; ?>" selected>
+																		<?= $key['lbl_az_state_t_name']; ?>
+																	</option>
+																<?php else: ?>
+																	<option value="<?= $key['lbl_az_state_t_value']; ?>">
+																		<?= $key['lbl_az_state_t_name']; ?>
+																	</option>
+																<?php endif ?>
+															<?php endforeach; ?>
+														<?php else: ?>
+															<option value="0">No existen resultados</option>
+														<?php endif; ?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="form-group">
+												<label>
+													<span>Descripcion:</span>
+												</label>
+												<div class="input-group input-group-sm">
+													<textarea name="field_description" class="form-control" placeholder="Digita el texto ..." required="" rows="5"><?= $df_sql_controller_update[d_pd_management_tree_m_description]; ?></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->insert('backend/design/footer'); ?>
+		</div>
+	</div>
+	<?= $this->insert('backend/design/script'); ?>
+</body>
+</html>
